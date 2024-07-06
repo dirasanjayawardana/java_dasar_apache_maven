@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>dirapp</groupId>
+        <artifactId>java_dasar_apache_maven</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- nama module, harus di include di pom.xml di parentnya -->
+    <artifactId>module-app</artifactId>
+
+    <!-- semua dependency yg ada di parentnya, akan otomatis terinclude di setiap modulenya -->
+    <!-- namun jika menggunakan dependencyManagement pada parentnya, maka harus include dependency yang ingin digunakan tanpa menyebutkan versinya, karena versinya akan sesuai dengan yg ada di parentnya -->
+
+    <dependencies>
+        <!-- include antar module -->
+        <dependency>
+            <groupId>dirapp</groupId>
+            <artifactId>module-data</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>

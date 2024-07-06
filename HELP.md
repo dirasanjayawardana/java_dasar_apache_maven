@@ -38,8 +38,8 @@ Beberapa Lifecycle di Maven:
 #### Jika ingin distribution file yg dihasilkan include semua dependecy, bisa gunakan Plugin, contohnya Assembly Plugin.
 - Tambahkan plugin di file pom.xml pada tag `<plugins>`
 - Tentukan main class nya di tag `<mainClass>`
-- Kemudian jalankan perintah `mvn package assembly:single`
-- Akan dihaasilkan satu file distribution di folder Targer yang siap dirunning dengan perintah `java -jar target/namaFile.jar`
+- Kemudian jalankan perintah `mvn clean package assembly:single`
+- Akan dihaasilkan satu file distribution di folder Target yang siap dirunning dengan perintah `java -jar target/namaFile.jar`
 
 ## Dependency Management
 Saat menambahkan dependecy ke project Maven, harus menentukan scope(ruang lingkup) dependecy tersebut.
@@ -58,3 +58,17 @@ pada tag `<repositories>`
 Maven mendukung properties untuk menyimpan data konfiugrasi yang dapat digunakan di file pom.xml
 Bisa tambahkan data konfigurasi di file pom.xml pada tag `<properties>` dengan aturan `<nama.properties>value</nama.properties>`
 Untuk menggunakannya cukup dengan `${nama.properties}` pada field pom.xml
+
+## Multi Module Project
+Maven mendukung multi module project (modular/terpisah). Misalkan ingin memisahkan model, controller, view, service, repository, dll.
+Cara membuat module baru:
+- Membuat folder baru, lalu menambahkan setting pom.xml di folder tersebut
+- Module harus memiliki parent, dimana parentnya adalah folder diatas folder tersebut
+- Di pom.xml di parentnya, module yang sudah dibuat harus di include, kemudia packagingnya bukan lagi `jar` tetapi `pom`
+- Untuk Build distribution filenya masih sama, dengan perintah `mvn clean package assembly:single`
+- Distribution file jar nya akan berada di folder target, sesuai dengan letak main class nya
+- Distribution file siap dirunning dengan perintah `java -jar module/app/target/namaFile.jar`
+
+## Dependency Management
+Maven mendukung fitur dependency manajemen, dimana bisa mamsukkan daftar dependency di parent modulenya berserta versinya pada tag `<dependencyManagement>`, lalu menambahkan dependency di masing-masing module tanpa harus menggunakan versinya.
+Secara otomatis versi dependency di setiap module akan sama dengan versi di parentnya
