@@ -26,7 +26,7 @@ Beberapa Lifecycle di Maven:
 - `mvn test-compile` (melakukan compile test code project)
 - `mvn test` (menjalankan unit test)
 - `mvn package` (membuat distribution file)
-- `mvn install` (menginstall project ke local repository, sehingga bisa digunakan di project lain di local)
+- `mvn install` (build project dari awal, compile source code, menjalankan tes, dan menginstal artefak/dependecy/library yang dihasilkan ke repository lokal untuk penggunaan lebih lanjut atau digunakan pada project lain di local)
 - `mvn deploy` (deploy project ke remote repository di server)
 
 ## Build Project
